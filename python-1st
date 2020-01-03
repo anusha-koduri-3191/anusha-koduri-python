@@ -1,0 +1,26 @@
+import requests
+import json
+
+response = requests.get('https://swapi.co/api/people')
+data = response.json()
+y = json.dumps(data)
+resp = json.loads(y)
+#print (resp)
+#print (resp['name'])
+
+for result in resp['results']:
+  print('Name : '+result['name'])
+  responsehomeworld = requests.get(result['homeworld'])
+  datahomeworld = responsehomeworld.json()
+  yhomeworld = json.dumps(datahomeworld)
+  resphomeworld = json.loads(yhomeworld)
+  print('Home world : '+resphomeworld['name']) 
+  #print('Home world : '+result['homeworld'])
+  for p in result['starships']: 
+    #print('Star Ship : '+p)
+    responsestarships = requests.get(p)
+    datastarships = responsestarships.json()
+    ystarships = json.dumps(datastarships)
+    respstarships = json.loads(ystarships)
+    print('Star Ships : '+respstarships['name'])
+  print('\n')
