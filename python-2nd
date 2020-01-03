@@ -1,0 +1,74 @@
+class Item(object):
+    def __init__(self, id, name, quantity):
+        self.id = id
+        self.name = name
+        self.quantity = quantity
+
+
+class Inventory(object):    
+    def __init__(self):
+        self.items = {}
+
+    def add_item(self, item):
+        self.items[item.id] = item
+
+    def print_items(self):
+        print('\t'.join(['Id', 'Name', 'quantity']))
+        for item in self.items.values():
+            print('\t'.join([str(x) for x in [item.id, item.name, item.quantity]]))
+    
+    def update_items(self, productId, productQty):
+        for item in self.items.values():   
+          productIdint = int(productId)
+          if item.id == productIdint:
+            item.quantity = productQty
+            #item.id = productId
+            #item.quantity = productQty
+            #print('none')
+            #inventory[productId] = quantity            
+        inventory.print_items()
+        print('—— Your items have been ordered. ——-')        
+        #myfunc(2)
+        #myfunc2(3)
+        
+
+
+inventory = Inventory()
+inventory.add_item(Item(1, 'Apple', 10))
+inventory.add_item(Item(2,'Orange', 12))
+inventory.add_item(Item(3, 'Banana', 6))
+inventory.add_item(Item(4,'Pear', 5))
+inventory.add_item(Item(5, 'Avacado', 1))
+inventory.print_items()
+
+
+def myfunc(productId):
+  print('What would you like to order today ?')
+  while True:
+    productId = input("Please enter product id between 1-5:")     
+    if productId.isdigit() and 1 <= int(productId) <= 5:
+        print('product id : '+productId)
+        return productId
+        break;        
+        print('please enter product id between 1 - 5 or digits only')
+
+def myfunc2(productQty):
+  while True:      
+      productQty = input('Please enter product Qty: ')
+      if productQty.isdigit():
+        print('product Qty : '+productQty)
+        return productQty
+        break;        
+        print('please enter digits only')
+
+#def a(x):
+#    x = input("Enter a ")
+#    return x
+
+#def b(f,x):
+#    return f(x)
+
+#b(a,10)
+
+while(1<10):
+  inventory.update_items(myfunc(44),myfunc2(33))
